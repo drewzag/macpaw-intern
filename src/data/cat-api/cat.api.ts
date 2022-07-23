@@ -1,12 +1,15 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { Breed, BreedsRequest, Cat, CatRequest, SearchBreeds } from '../../models/models'
 
+const SUB_ID = 'drew1111'
+
 export const catApi = createApi({
   reducerPath: 'cat/api',
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://api.thecatapi.com/v1/',
-    headers: {
-      'x-api-key': 'ead5678f-7f39-4919-8607-355edec25e50',
+    prepareHeaders: (headers) => {
+      headers.set('x-api-key', 'ead5678f-7f39-4919-8607-355edec25e50')
+      return headers
     },
   }),
   endpoints: (build) => ({
@@ -20,6 +23,14 @@ export const catApi = createApi({
           page,
           mime_types,
           order,
+        },
+      }),
+    }),
+    getSingleCatById: build.query<Cat[], string>({
+      query: (image_id) => ({
+        url: 'images',
+        params: {
+          image_id,
         },
       }),
     }),
@@ -41,7 +52,44 @@ export const catApi = createApi({
         },
       }),
     }),
+    getVotes: build.query<GetVotesType[], void>({
+      query: () => ({
+        url: 'votes',
+        params: {
+          sub_id: SUB_ID,
+        },
+      }),
+    }),
+    makeVote: build.mutation<MakeVoteResponseType, MakeVoteRequestType>({
+      query: (vote) => ({
+        url: 'votes',
+        method: 'POST',
+        body: { sub_id: SUB_ID, ...vote },
+      }),
+    }),
   }),
 })
 
-export const { useGetCatsQuery, useGetAllBreedsQuery, useGetSearchBreedQuery } = catApi
+export const {
+  useGetCatsQuery,
+  useGetSingleCatByIdQuery,
+  useGetAllBreedsQuery,
+  useGetSearchBreedQuery,
+  useGetVotesQuery,
+  useMakeVoteMutation,
+} = catApi
+
+export type GetVotesType = {
+  value: number
+  image_id: string
+}
+
+type MakeVoteResponseType = {
+  id: string
+  message: string
+}
+
+type MakeVoteRequestType = {
+  image_id: string
+  value: number
+}

@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { setupListeners } from '@reduxjs/toolkit/dist/query'
 import { catApi } from './cat-api/cat.api'
 
 export const store = configureStore({
