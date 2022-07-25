@@ -44,7 +44,6 @@ export const BreedsPage = () => {
     setOrder(e.target.value)
   }
 
-  if (isBreedsLoading || isCatsLoading) return <div>Loading...</div>
   return (
     <div>
       <div>BreedsPage</div>
@@ -60,7 +59,8 @@ export const BreedsPage = () => {
           </option>
         ))}
       </select>
-      <ImagesGrid data={data} />
+
+      {isBreedsLoading || isCatsLoading ? <div>Loading...</div> : <ImagesGrid data={data} />}
     </div>
   )
 }
