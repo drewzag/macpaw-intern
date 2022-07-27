@@ -4,7 +4,7 @@ import { useGetAllBreedsQuery, useGetCatsQuery } from '../data/cat-api/cat.api'
 import { Cat } from '../models/models'
 
 export const BreedsPage = () => {
-  const [limit, setLimit] = useState('15')
+  const [limit, setLimit] = useState('5')
   const [breedIds, setBreedIds] = useState('')
   const [page, setPage] = useState('0')
   const [order, setOrder] = useState('asc')
@@ -42,6 +42,9 @@ export const BreedsPage = () => {
   const onOrderChangeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setOrder(e.target.value)
   }
+  const onLimitChangeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setLimit(e.target.value)
+  }
 
   return (
     <div>
@@ -49,6 +52,13 @@ export const BreedsPage = () => {
       <select name='order' onChange={onOrderChangeHandler}>
         <option value={'asc'}>asc</option>
         <option value={'desc'}>desc</option>
+      </select>
+      <select name='limit' onChange={onLimitChangeHandler}>
+        <option value={'5'}>5</option>
+        <option value={'10'}>10</option>
+        <option value={'15'}>15</option>
+        <option value={'20'}>20</option>
+        <option value={'25'}>25</option>
       </select>
       <select name='select_breeds' onChange={onBreedChangeHandler}>
         <option value={''}>None</option>

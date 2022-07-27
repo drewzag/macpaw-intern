@@ -43,22 +43,25 @@ const Grid = styled.div`
   }
 `
 
-export const ImagesGrid: React.FC<PropsType> = ({ data }) => {
-  let size = 5 //размер подмассива
-  let dataMain = [] //массив в который будет выведен результат.
-
+const arrayDivide = (data: Cat[]) => {
+  let size = 5
+  let dataMain = []
   for (let i = 0; i < data.length; i += size) {
     dataMain.push(data.slice(i, i + size))
   }
+  return dataMain
+}
+
+export const ImagesGrid: React.FC<PropsType> = ({ data }) => {
+  let dividedCatsArray = arrayDivide(data)
 
   return (
     <Grid>
-      {dataMain.map((item, index) => (
+      {dividedCatsArray.map((item, index) => (
         <div key={item[index]?.id} className={`${index % 2 === 0 ? 'normal' : 'revers'}`}>
           {item.map((el) => (
-            <figure>
+            <figure key={el.id}>
               <img src={el.url} />
-              <div>{el?.id}</div>
             </figure>
           ))}
         </div>
