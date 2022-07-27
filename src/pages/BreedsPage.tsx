@@ -34,9 +34,8 @@ export const BreedsPage = () => {
     data = showFiltredBreeds
   }
 
-  console.log(data)
-
   const onBreedChangeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setBreedIds('')
     setBreedIds(e.target.value)
   }
 
@@ -59,8 +58,8 @@ export const BreedsPage = () => {
           </option>
         ))}
       </select>
-
-      {isBreedsLoading || isCatsLoading ? <div>Loading...</div> : <ImagesGrid data={data} />}
+      {showAllBreeds && breedIds === '' && <ImagesGrid data={data} />}
+      {showFiltredBreeds && breedIds !== '' && <ImagesGrid data={data} />}
     </div>
   )
 }
