@@ -53,27 +53,16 @@ export const ImagesGrid: React.FC<PropsType> = ({ data }) => {
 
   return (
     <Grid>
-      {dataMain.map((item, index) =>
-        index % 2 === 0 ? (
-          <div key={item[index]?.id} className='normal'>
-            {item.map((el) => (
-              <figure>
-                <img src={el.url} />
-                <div>{el?.id}</div>
-              </figure>
-            ))}
-          </div>
-        ) : (
-          <div key={item[index]?.id} className='revers'>
-            {item.map((el) => (
-              <figure>
-                <img src={el.url} />
-                <div>{el?.id}</div>
-              </figure>
-            ))}
-          </div>
-        )
-      )}
+      {dataMain.map((item, index) => (
+        <div key={item[index]?.id} className={`${index % 2 === 0 ? 'normal' : 'revers'}`}>
+          {item.map((el) => (
+            <figure>
+              <img src={el.url} />
+              <div>{el?.id}</div>
+            </figure>
+          ))}
+        </div>
+      ))}
     </Grid>
   )
 }
