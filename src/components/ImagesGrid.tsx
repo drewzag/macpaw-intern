@@ -44,7 +44,7 @@ const Grid = styled.div`
 `
 
 const arrayDivide = (data: Cat[]) => {
-  let size = 5
+  const size = 5
   let dataMain = []
   for (let i = 0; i < data.length; i += size) {
     dataMain.push(data.slice(i, i + size))
@@ -53,7 +53,7 @@ const arrayDivide = (data: Cat[]) => {
 }
 
 export const ImagesGrid: React.FC<PropsType> = ({ data }) => {
-  let dividedCatsArray = arrayDivide(data)
+  const dividedCatsArray = arrayDivide(data)
 
   return (
     <Grid>
