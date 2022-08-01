@@ -1,18 +1,26 @@
 import { ImagesGrid } from '../components/ImagesGrid'
-import { GetVotesType, useGetCatsQuery, useGetVotesQuery } from '../data/cat-api/cat.api'
+import { useGetVotesQuery } from '../data/cat-api/cat.api'
+import { Cat } from '../models/models'
 
 export const LikesPage = () => {
-  const { data, isLoading, isError } = useGetVotesQuery()
+  const { data: VotedCats, isLoading, isError } = useGetVotesQuery()
 
-  const likesData = data?.filter((cat) => cat.value === 1 && cat)
-  console.log(likesData)
+  const likesData = VotedCats?.filter((cat) => cat.value === 1)
+
+  let data: Cat[] = []
+  if (likesData) {
+    data = likesData.map((cat) => ({
+      id: cat.image.id,
+      url: cat.image.url,
+    }))
+  }
 
   if (isLoading) return <div>Loading...</div>
   if (isError) return <div>Some Error</div>
   return (
     <>
-      {/* <ImagesGrid data={data} /> */}
       <div>LikesPage</div>
+      <ImagesGrid data={data} />
     </>
   )
 }

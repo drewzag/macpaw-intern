@@ -80,8 +80,12 @@ export const {
 } = catApi
 
 export type GetVotesType = {
+  id: string
   value: number
-  image_id: string
+  image: {
+    url: string
+    id: string
+  }
 }
 
 type MakeVoteResponseType = {
