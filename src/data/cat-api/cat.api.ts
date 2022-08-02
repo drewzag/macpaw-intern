@@ -67,6 +67,14 @@ export const catApi = createApi({
         body: { sub_id: SUB_ID, ...vote },
       }),
     }),
+    getFavourites: build.query<GetVotesType[], void>({
+      query: () => ({
+        url: 'favourites',
+        params: {
+          sub_id: SUB_ID,
+        },
+      }),
+    }),
   }),
 })
 
@@ -77,6 +85,7 @@ export const {
   useGetSearchBreedQuery,
   useGetVotesQuery,
   useMakeVoteMutation,
+  useGetFavouritesQuery,
 } = catApi
 
 export type GetVotesType = {
