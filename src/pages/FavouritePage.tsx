@@ -1,15 +1,13 @@
 import { ImagesGrid } from '../components/ImagesGrid'
-import { useGetVotesQuery } from '../data/cat-api/cat.api'
+import { useGetFavouritesQuery } from '../data/cat-api/cat.api'
 import { Cat } from '../models/models'
 
 export const FavouritePage = () => {
-  const { data: FavouritesCats, isLoading, isError } = useGetVotesQuery()
-
-  const favouritesData = FavouritesCats?.filter((cat) => cat.value === 0)
+  const { data: FavouritesCats, isLoading, isError } = useGetFavouritesQuery()
 
   let data: Cat[] = []
-  if (favouritesData) {
-    data = favouritesData.map((cat) => ({
+  if (FavouritesCats) {
+    data = FavouritesCats.map((cat) => ({
       id: cat.image.id,
       url: cat.image.url,
     }))
@@ -19,7 +17,7 @@ export const FavouritePage = () => {
   if (isError) return <div>Some Error</div>
   return (
     <>
-      <div>DisikesPage</div>
+      <div>Favourites Page</div>
       <ImagesGrid data={data} />
     </>
   )

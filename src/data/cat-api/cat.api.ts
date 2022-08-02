@@ -75,6 +75,13 @@ export const catApi = createApi({
         },
       }),
     }),
+    makeFavourite: build.mutation<MakeVoteResponseType, MakeFavRequestType>({
+      query: (fav) => ({
+        url: 'favourites',
+        method: 'POST',
+        body: { sub_id: SUB_ID, ...fav },
+      }),
+    }),
   }),
 })
 
@@ -86,6 +93,7 @@ export const {
   useGetVotesQuery,
   useMakeVoteMutation,
   useGetFavouritesQuery,
+  useMakeFavouriteMutation,
 } = catApi
 
 export type GetVotesType = {
@@ -105,4 +113,8 @@ type MakeVoteResponseType = {
 type MakeVoteRequestType = {
   image_id: string
   value: number
+}
+
+type MakeFavRequestType = {
+  image_id: string
 }
