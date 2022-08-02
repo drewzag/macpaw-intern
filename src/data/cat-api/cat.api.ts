@@ -82,6 +82,13 @@ export const catApi = createApi({
         body: { sub_id: SUB_ID, ...fav },
       }),
     }),
+    deleteVote: build.mutation<string, string>({
+      query: (vote_id) => ({
+        url: 'votes',
+        method: 'DELETE',
+        body: { vote_id },
+      }),
+    }),
   }),
 })
 
