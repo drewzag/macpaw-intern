@@ -12,6 +12,7 @@ export const catApi = createApi({
       return headers
     },
   }),
+  tagTypes: ['Vote'],
   endpoints: (build) => ({
     getCats: build.query<Cat[], CatRequest>({
       query: ({ id, limit, breed_id, page, mime_types, order }) => ({
@@ -59,6 +60,7 @@ export const catApi = createApi({
           sub_id: SUB_ID,
         },
       }),
+      providesTags: ['Vote'],
     }),
     makeVote: build.mutation<MakeVoteResponseType, MakeVoteRequestType>({
       query: (vote) => ({
@@ -74,6 +76,7 @@ export const catApi = createApi({
           sub_id: SUB_ID,
         },
       }),
+      providesTags: ['Vote'],
     }),
     makeFavourite: build.mutation<MakeVoteResponseType, MakeFavRequestType>({
       query: (fav) => ({
@@ -87,6 +90,7 @@ export const catApi = createApi({
         url: `${url}/${vote_id}`,
         method: 'DELETE',
       }),
+      invalidatesTags: ['Vote'],
     }),
   }),
 })
