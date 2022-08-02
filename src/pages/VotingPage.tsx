@@ -6,7 +6,7 @@ import {
 } from '../data/cat-api/cat.api'
 
 export const VotingPage = () => {
-  const { isLoading, isError, data } = useGetCatsQuery({ limit: '1' })
+  const { data, isLoading, isError } = useGetCatsQuery({ limit: '1' })
   const [makeVote] = useMakeVoteMutation()
   const [makeFav] = useMakeFavouriteMutation()
 

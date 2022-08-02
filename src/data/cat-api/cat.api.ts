@@ -82,11 +82,10 @@ export const catApi = createApi({
         body: { sub_id: SUB_ID, ...fav },
       }),
     }),
-    deleteVote: build.mutation<string, string>({
-      query: (vote_id) => ({
-        url: 'votes',
+    deleteVote: build.mutation<string, DeleteVoteType>({
+      query: ({ url = 'votes', vote_id }) => ({
+        url: `${url}/${vote_id}`,
         method: 'DELETE',
-        body: { vote_id },
       }),
     }),
   }),
@@ -101,6 +100,7 @@ export const {
   useMakeVoteMutation,
   useGetFavouritesQuery,
   useMakeFavouriteMutation,
+  useDeleteVoteMutation,
 } = catApi
 
 export type GetVotesType = {
@@ -124,4 +124,9 @@ type MakeVoteRequestType = {
 
 type MakeFavRequestType = {
   image_id: string
+}
+
+type DeleteVoteType = {
+  url?: string
+  vote_id: string
 }

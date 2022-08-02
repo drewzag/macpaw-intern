@@ -12,6 +12,12 @@ export interface Cat {
   url: string
 }
 
+export interface VotedCat {
+  id: string
+  image_id?: string
+  url: string
+}
+
 export interface BreedsRequest {
   limit?: string
   page?: string

@@ -1,9 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Cat } from '../models/models'
+import { useDeleteVoteMutation } from '../data/cat-api/cat.api'
+import { VotedCat } from '../models/models'
 
 type PropsType = {
-  data: Cat[]
+  data: VotedCat[]
+  url?: string
 }
 
 const Grid = styled.div`
@@ -43,7 +45,7 @@ const Grid = styled.div`
   }
 `
 
-const arrayDivide = (data: Cat[]) => {
+const arrayDivide = (data: VotedCat[]) => {
   const size = 5
   let dataMain = []
   for (let i = 0; i < data.length; i += size) {
@@ -52,8 +54,9 @@ const arrayDivide = (data: Cat[]) => {
   return dataMain
 }
 
-export const ImagesGrid: React.FC<PropsType> = ({ data }) => {
+export const ImagesGrid: React.FC<PropsType> = ({ data, url }) => {
   const dividedCatsArray = arrayDivide(data)
+  const [deleteVote] = useDeleteVoteMutation()
 
   return (
     <Grid>
@@ -62,6 +65,9 @@ export const ImagesGrid: React.FC<PropsType> = ({ data }) => {
           {item.map((el) => (
             <figure key={el.id}>
               <img src={el.url} />
+              <div>
+                <button onClick={() => deleteVote({ vote_id: el.id, url })}>delete</button>
+              </div>
             </figure>
           ))}
         </div>
