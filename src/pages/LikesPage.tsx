@@ -24,8 +24,3 @@ export const LikesPage = () => {
     </>
   )
 }
-
-type PropsType = {
-  id: string
-  value: number
-}
