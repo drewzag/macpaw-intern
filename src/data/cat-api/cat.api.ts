@@ -92,6 +92,13 @@ export const catApi = createApi({
       }),
       invalidatesTags: ['Vote'],
     }),
+    uploadImage: build.mutation<[], FormData>({
+      query: (image) => ({
+        url: 'images/upload',
+        method: 'POST',
+        body: image,
+      }),
+    }),
   }),
 })
 
@@ -105,6 +112,7 @@ export const {
   useGetFavouritesQuery,
   useMakeFavouriteMutation,
   useDeleteVoteMutation,
+  useUploadImageMutation,
 } = catApi
 
 export type GetVotesType = {
