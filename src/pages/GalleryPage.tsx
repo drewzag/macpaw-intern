@@ -1,17 +1,23 @@
 import { ImagesGrid } from '../components/ImagesGrid'
-import { useGetCatsQuery, useUploadImageMutation } from '../data/cat-api/cat.api'
+import {
+  useGetCatsQuery,
+  useLazyGetAnalysisQuery,
+  useUploadImageMutation,
+} from '../data/cat-api/cat.api'
 
 export const GalleryPage = () => {
   const { data, isLoading } = useGetCatsQuery({ limit: '10', page: '' })
   const [uploadImage] = useUploadImageMutation()
+  const [getAnalysis] = useLazyGetAnalysisQuery()
 
-  const sendFile = (e: React.FormEvent<HTMLInputElement>) => {
-    // e.preventDefault()
+  const sendFile = async (e: React.FormEvent<HTMLInputElement>) => {
     if (e.currentTarget.files) {
       const file = e.currentTarget.files[0]
       const formData = new FormData()
       formData.append('file', file)
-      uploadImage(formData)
+      formData.append('sub_id', 'drew1111')
+      const resp = await getAnalysis((await uploadImage(formData).unwrap()).id)
+      console.log(resp)
     }
   }
 
