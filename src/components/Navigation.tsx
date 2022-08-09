@@ -14,11 +14,11 @@ const NavBlock = styled.div`
   width: 500px;
 `
 
-const FunctionButton = styled.button<{ active: boolean }>`
+const FunctionButton = styled.button<{ active: boolean; width?: string }>`
   border-radius: 10px;
   border: none;
   height: 36px;
-  width: 100%;
+  width: ${(props) => props.width || '100%'};
   background-color: ${(props) => (props.active ? '#ff868e' : '#fff ')};
   color: ${(props) => (props.active ? '#fff ' : '#ff868e')};
   &:hover {
