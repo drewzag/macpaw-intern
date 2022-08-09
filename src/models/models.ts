@@ -35,3 +35,9 @@ export interface SearchBreeds {
   name: string
   reference_image_id: string
 }
+
+export enum BasePathname {
+  VOTING = '/voting',
+  BREEDS = '/breeds',
+  GALLERY = '/gallery',
+}

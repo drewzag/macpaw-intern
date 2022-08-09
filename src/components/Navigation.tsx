@@ -3,7 +3,8 @@ import VoteTable from '../assets/vote-table.png'
 import PetBreeds from '../assets/pet-breeds.png'
 import ImageSearch from '../assets/images-search.png'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
+import { BasePathname } from '../models/models'
 
 const NavBlock = styled.div`
   /* delete background color */
@@ -51,28 +52,43 @@ const NavigationImage = styled.div<{ backgroundColor: string; active: boolean }>
 `
 
 export const Navigation = () => {
-  const [act, setAct] = useState(false)
+  const [isVoting, setIsVoting] = useState(false)
+  const [isBreeds, setIsBreeds] = useState(false)
+  const [isGallery, setIsGallery] = useState(false)
+  const activePage = useLocation()
+
+  const whichIsActive = () => {
+    switch (activePage.pathname) {
+      case BasePathname.VOTING:
+        setIsVoting(true)
+      case BasePathname.BREEDS:
+        setIsBreeds(true)
+      case BasePathname.GALLERY:
+        setIsGallery(true)
+    }
+  }
+
   return (
     <>
       <div>Navigation</div>
       <NavBlock>
         <Link to='/voting'>
-          <NavigationImage backgroundColor='#B4B7FF' active={act} onClick={() => setAct(!act)}>
+          <NavigationImage backgroundColor='#B4B7FF' active={isVoting}>
             <img src={VoteTable} />
           </NavigationImage>
-          <FunctionButton active={true}>VOTING</FunctionButton>
+          <FunctionButton active={isVoting}>VOTING</FunctionButton>
         </Link>
         <Link to='/breeds'>
-          <NavigationImage backgroundColor='#97EAB9' active={false}>
+          <NavigationImage backgroundColor='#97EAB9' active={isBreeds}>
             <img src={PetBreeds} />
           </NavigationImage>
-          <FunctionButton active={false}>BREEDS</FunctionButton>
+          <FunctionButton active={isBreeds}>BREEDS</FunctionButton>
         </Link>
         <Link to='/gallery'>
-          <NavigationImage backgroundColor='#FFD280' active={false}>
+          <NavigationImage backgroundColor='#FFD280' active={isGallery}>
             <img src={ImageSearch} />
           </NavigationImage>
-          <FunctionButton active={false}>GALLERY</FunctionButton>
+          <FunctionButton active={isGallery}>GALLERY</FunctionButton>
         </Link>
       </NavBlock>
     </>
