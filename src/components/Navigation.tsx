@@ -14,13 +14,27 @@ const NavBlock = styled.div`
   width: 500px;
 `
 
-const NavImageButton = styled.button<{ backgroundColor: string; active: boolean }>`
+const FunctionButton = styled.button<{ active: boolean }>`
+  border-radius: 10px;
+  border: none;
+  height: 36px;
+  width: 100%;
+  background-color: ${(props) => (props.active ? '#ff868e' : '#fff ')};
+  color: ${(props) => (props.active ? '#fff ' : '#ff868e')};
+  &:hover {
+    background-color: #fbe0dc;
+    color: ${(props) => props.active && '#ff868e'};
+  }
+`
+
+const NavigationImage = styled.div<{ backgroundColor: string; active: boolean }>`
   position: relative;
   box-sizing: border-box;
   width: 140px;
   height: 200px;
   border-radius: 20px;
   overflow: hidden;
+  margin-bottom: 10px;
   border: 4px solid ${(props) => (props.active ? '#FBE0DC' : 'rgba(255, 255, 255, 0.6)')};
   background-color: ${(props) => props.backgroundColor};
   &:hover {
@@ -42,19 +56,22 @@ export const Navigation = () => {
       <div>Navigation</div>
       <NavBlock>
         <Link to='/voting'>
-          <NavImageButton backgroundColor='#B4B7FF' active={act} onClick={() => setAct(!act)}>
+          <NavigationImage backgroundColor='#B4B7FF' active={act} onClick={() => setAct(!act)}>
             <img src={VoteTable} />
-          </NavImageButton>
+          </NavigationImage>
+          <FunctionButton active={true}>VOTING</FunctionButton>
         </Link>
         <Link to='/breeds'>
-          <NavImageButton backgroundColor='#97EAB9' active={false}>
+          <NavigationImage backgroundColor='#97EAB9' active={false}>
             <img src={PetBreeds} />
-          </NavImageButton>
+          </NavigationImage>
+          <FunctionButton active={false}>BREEDS</FunctionButton>
         </Link>
         <Link to='/gallery'>
-          <NavImageButton backgroundColor='#FFD280' active={false}>
+          <NavigationImage backgroundColor='#FFD280' active={false}>
             <img src={ImageSearch} />
-          </NavImageButton>
+          </NavigationImage>
+          <FunctionButton active={false}>GALLERY</FunctionButton>
         </Link>
       </NavBlock>
     </>
