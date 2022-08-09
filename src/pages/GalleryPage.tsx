@@ -17,7 +17,6 @@ export const GalleryPage = () => {
       formData.append('file', file)
       formData.append('sub_id', 'drew1111')
       const resp = await getAnalysis((await uploadImage(formData).unwrap()).id)
-      console.log(resp)
     }
   }
 
