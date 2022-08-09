@@ -22,6 +22,7 @@ const FunctionButton = styled.button<{ active: boolean; width?: string }>`
   background-color: ${(props) => (props.active ? '#ff868e' : '#fff ')};
   color: ${(props) => (props.active ? '#fff ' : '#ff868e')};
   &:hover {
+    cursor: pointer;
     background-color: #fbe0dc;
     color: ${(props) => props.active && '#ff868e'};
   }
