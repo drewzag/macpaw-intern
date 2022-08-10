@@ -1,20 +1,11 @@
 import styled from 'styled-components'
 import { ImagesGrid } from '../components/ImagesGrid'
+import { SearchField } from '../components/SearchField'
 import {
   useGetCatsQuery,
   useMakeFavouriteMutation,
   useMakeVoteMutation,
 } from '../data/cat-api/cat.api'
-import { ReactComponent as Like } from '../assets/like.svg'
-import { ReactComponent as Dislike } from '../assets/dislike-30.svg'
-import { ReactComponent as Favourites } from '../assets/fav-30.svg'
-
-const SmallButton = styled.button`
-  width: 60px;
-  height: 60px;
-  border-radius: 20px;
-  border: none;
-`
 
 export const VotingPage = () => {
   const { data, isLoading, isError } = useGetCatsQuery({ limit: '1' })
@@ -24,15 +15,7 @@ export const VotingPage = () => {
   return (
     <>
       <div>VotingPage</div>
-      <SmallButton>
-        <Like fill='red' />
-      </SmallButton>
-      <SmallButton>
-        <Dislike />
-      </SmallButton>
-      <SmallButton>
-        <Favourites />
-      </SmallButton>
+      <SearchField />
       {isLoading ? (
         <div>Loading...</div>
       ) : (

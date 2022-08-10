@@ -7,8 +7,6 @@ import { Link, useLocation } from 'react-router-dom'
 import { BasePathname } from '../models/models'
 
 const NavBlock = styled.div`
-  /* delete background color */
-  background-color: #f8f8f7;
   display: flex;
   justify-content: space-between;
   align-items: center;
