@@ -35,9 +35,12 @@ const SearchInput = styled.div`
     height: 100%;
     width: 100%;
     box-sizing: border-box;
+    &:hover {
+      border-color: #fbe0dc;
+    }
     &:focus {
       outline: none;
-      border: 2px solid #ff868e;
+      border-color: #ff868e;
     }
   }
   button {
