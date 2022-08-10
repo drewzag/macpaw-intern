@@ -2,15 +2,13 @@ import styled from 'styled-components'
 import VoteTable from '../assets/vote-table.png'
 import PetBreeds from '../assets/pet-breeds.png'
 import ImageSearch from '../assets/images-search.png'
-import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { BasePathname } from '../models/models'
 
 const NavBlock = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
-  width: 500px;
 `
 
 const FunctionButton = styled.button<{ active: boolean; width?: string }>`
@@ -50,25 +48,25 @@ const NavigationImage = styled.div<{ backgroundColor: string; active: boolean }>
 `
 
 export const Navigation = () => {
-  const [isVoting, setIsVoting] = useState(false)
-  const [isBreeds, setIsBreeds] = useState(false)
-  const [isGallery, setIsGallery] = useState(false)
+  let isVoting = false
+  let isBreeds = false
+  let isGallery = false
   const activePage = useLocation()
 
-  const whichIsActive = () => {
-    switch (activePage.pathname) {
-      case BasePathname.VOTING:
-        setIsVoting(true)
-      case BasePathname.BREEDS:
-        setIsBreeds(true)
-      case BasePathname.GALLERY:
-        setIsGallery(true)
-    }
+  switch (activePage.pathname) {
+    case BasePathname.VOTING:
+      isVoting = true
+      break
+    case BasePathname.BREEDS:
+      isBreeds = true
+      break
+    case BasePathname.GALLERY:
+      isGallery = true
+      break
   }
 
   return (
     <>
-      <div>Navigation</div>
       <NavBlock>
         <Link to='/voting'>
           <NavigationImage backgroundColor='#B4B7FF' active={isVoting}>
