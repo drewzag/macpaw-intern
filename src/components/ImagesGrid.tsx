@@ -11,9 +11,11 @@ type PropsType = {
 const Grid = styled.div`
   overflow: scroll;
   margin: 0;
+  height: 90%;
   .normal {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
     figure {
       &:nth-child(1) {
         grid-row: 1 / 3;
@@ -27,6 +29,7 @@ const Grid = styled.div`
   .revers {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
     figure {
       &:nth-child(3) {
         grid-row: 1 / 3;
@@ -65,9 +68,9 @@ export const ImagesGrid: React.FC<PropsType> = ({ data, url }) => {
           {item.map((el) => (
             <figure key={el.id}>
               <img src={el.url} />
-              <div>
+              {/* <div>
                 <button onClick={() => deleteVote({ vote_id: el.id, url })}>delete</button>
-              </div>
+              </div> */}
             </figure>
           ))}
         </div>

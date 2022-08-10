@@ -66,7 +66,6 @@ export const SearchField = () => {
 
   return (
     <>
-      <div>SearchField</div>
       <SearchWrapper>
         <SearchInput>
           <input />

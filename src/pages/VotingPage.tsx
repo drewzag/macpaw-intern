@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import { ImagesGrid } from '../components/ImagesGrid'
-import { SearchField } from '../components/SearchField'
 import {
   useGetCatsQuery,
   useMakeFavouriteMutation,
@@ -14,8 +13,6 @@ export const VotingPage = () => {
 
   return (
     <>
-      <div>VotingPage</div>
-      <SearchField />
       {isLoading ? (
         <div>Loading...</div>
       ) : (

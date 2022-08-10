@@ -22,7 +22,6 @@ export const GalleryPage = () => {
 
   return (
     <>
-      <div>GalleryPage</div>
       <input type='file' onChange={sendFile} />
       {isLoading ? <div>Loading...</div> : data && <ImagesGrid data={data} />}
     </>

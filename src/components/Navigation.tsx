@@ -7,8 +7,10 @@ import { BasePathname } from '../models/models'
 
 const NavBlock = styled.div`
   display: flex;
-  justify-content: space-evenly;
   align-items: center;
+  justify-content: space-evenly;
+  width: 90%;
+  /* gap: 16px; */
 `
 
 const FunctionButton = styled.button<{ active: boolean; width?: string }>`
