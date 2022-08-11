@@ -88,30 +88,28 @@ export const SearchField = () => {
   }
 
   return (
-    <>
-      <SearchWrapper>
-        <SearchInput>
-          <input />
-          <SmallButton active={false}>
-            <Magnifier fill='#FF868d' />
-          </SmallButton>
-        </SearchInput>
-        <Link to='/likes'>
-          <SmallButton active={isLikes}>
-            <Like fill='#FF868d' />
-          </SmallButton>
-        </Link>
-        <Link to='/dislikes'>
-          <SmallButton active={isDislikes}>
-            <Favourites fill='#FF868d' />
-          </SmallButton>
-        </Link>
-        <Link to='/favourites'>
-          <SmallButton active={isFavourites}>
-            <Dislike fill='#FF868d' />
-          </SmallButton>
-        </Link>
-      </SearchWrapper>
-    </>
+    <SearchWrapper>
+      <SearchInput>
+        <input />
+        <SmallButton active={false}>
+          <Magnifier fill='#FF868d' />
+        </SmallButton>
+      </SearchInput>
+      <Link to='/likes'>
+        <SmallButton active={isLikes}>
+          <Like fill='#FF868d' />
+        </SmallButton>
+      </Link>
+      <Link to='/dislikes'>
+        <SmallButton active={isDislikes}>
+          <Favourites fill='#FF868d' />
+        </SmallButton>
+      </Link>
+      <Link to='/favourites'>
+        <SmallButton active={isFavourites}>
+          <Dislike fill='#FF868d' />
+        </SmallButton>
+      </Link>
+    </SearchWrapper>
   )
 }
