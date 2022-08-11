@@ -3,6 +3,7 @@ import { ReactComponent as Dislike } from '../assets/dislike-30.svg'
 import { ReactComponent as Favourites } from '../assets/fav-30.svg'
 import { ReactComponent as Magnifier } from '../assets/search-20.svg'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 const SearchWrapper = styled.div`
   display: flex;
@@ -73,15 +74,21 @@ export const SearchField = () => {
             <Magnifier fill={color} />
           </SmallButton>
         </SearchInput>
-        <SmallButton>
-          <Like fill={color} />
-        </SmallButton>
-        <SmallButton>
-          <Favourites fill={color} />
-        </SmallButton>
-        <SmallButton>
-          <Dislike fill={color} />
-        </SmallButton>
+        <Link to='/likes'>
+          <SmallButton>
+            <Like fill={color} />
+          </SmallButton>
+        </Link>
+        <Link to='/dislikes'>
+          <SmallButton>
+            <Favourites fill={color} />
+          </SmallButton>
+        </Link>
+        <Link to='/favourites'>
+          <SmallButton>
+            <Dislike fill={color} />
+          </SmallButton>
+        </Link>
       </SearchWrapper>
     </>
   )
