@@ -6,7 +6,7 @@ import {
 } from '../data/cat-api/cat.api'
 
 export const GalleryPage = () => {
-  const { data, isLoading } = useGetCatsQuery({ limit: '10', page: '' })
+  const { data, isLoading } = useGetCatsQuery({ limit: '20', page: '' })
   const [uploadImage] = useUploadImageMutation()
   const [getAnalysis] = useLazyGetAnalysisQuery()
 
@@ -21,9 +21,11 @@ export const GalleryPage = () => {
   }
 
   return (
-    <div>
-      <input type='file' onChange={sendFile} />
+    <>
+      <div>
+        <input type='file' onChange={sendFile} />
+      </div>
       {isLoading ? <div>Loading...</div> : data && <ImagesGrid data={data} />}
-    </div>
+    </>
   )
 }

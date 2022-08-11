@@ -9,7 +9,6 @@ import { BasePathname } from '../models/models'
 const SearchWrapper = styled.div`
   display: flex;
   gap: 10px;
-  box-sizing: border-box;
 `
 
 const SmallButton = styled.button<{ active: boolean }>`
@@ -18,7 +17,6 @@ const SmallButton = styled.button<{ active: boolean }>`
   border-radius: 20px;
   border: none;
   background-color: ${(props) => (props.active ? '#FF868E' : '#fff')};
-  box-sizing: border-box;
   padding: 0;
   svg {
     fill: ${(props) => props.active && '#fff'};
@@ -35,14 +33,12 @@ const SmallButton = styled.button<{ active: boolean }>`
 const SearchInput = styled.div`
   position: relative;
   flex-grow: 2;
-  box-sizing: border-box;
   input {
     border: 2px solid #fff;
     background-color: #fff;
     border-radius: 20px;
     height: 100%;
     width: 100%;
-    box-sizing: border-box;
     &:hover {
       border-color: #fbe0dc;
     }

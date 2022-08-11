@@ -11,7 +11,7 @@ type PropsType = {
 const Grid = styled.div`
   overflow: scroll;
   margin: 0;
-  height: 90%;
+  height: 100%;
   .normal {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

@@ -29,7 +29,6 @@ const FunctionButton = styled.button<{ active: boolean; width?: string }>`
 
 const NavigationImage = styled.div<{ backgroundColor: string; active: boolean }>`
   position: relative;
-  box-sizing: border-box;
   width: 140px;
   height: 200px;
   border-radius: 20px;

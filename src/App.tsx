@@ -19,13 +19,14 @@ const Wrapper = styled.div`
   display: flex;
   .nav {
     width: 50%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
   }
   .main {
     width: 50%;
-    height: 100%;
+    height: 89%;
   }
 `
 

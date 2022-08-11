@@ -1,4 +1,3 @@
-import styled from 'styled-components'
 import { ImagesGrid } from '../components/ImagesGrid'
 import {
   useGetCatsQuery,
@@ -12,11 +11,11 @@ export const VotingPage = () => {
   const [makeFav] = useMakeFavouriteMutation()
 
   return (
-    <div>
+    <>
       {isLoading ? (
         <div>Loading...</div>
       ) : (
-        <div>
+        <>
           {data && <ImagesGrid data={data} />}
           {data && (
             <button onClick={() => makeVote({ image_id: data[0].id, value: 1 })}>Like</button>
@@ -25,8 +24,8 @@ export const VotingPage = () => {
           {data && (
             <button onClick={() => makeVote({ image_id: data[0].id, value: 0 })}>Dislike</button>
           )}
-        </div>
+        </>
       )}
-    </div>
+    </>
   )
 }

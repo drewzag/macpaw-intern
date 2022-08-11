@@ -47,28 +47,30 @@ export const BreedsPage = () => {
   }
 
   return (
-    <div>
-      <select name='order' onChange={onOrderChangeHandler}>
-        <option value={'asc'}>asc</option>
-        <option value={'desc'}>desc</option>
-      </select>
-      <select name='limit' onChange={onLimitChangeHandler}>
-        <option value={'5'}>5</option>
-        <option value={'10'}>10</option>
-        <option value={'15'}>15</option>
-        <option value={'20'}>20</option>
-        <option value={'25'}>25</option>
-      </select>
-      <select name='select_breeds' onChange={onBreedChangeHandler}>
-        <option value={''}>None</option>
-        {allBreeds?.map((breed) => (
-          <option key={breed.id} value={breed.id}>
-            {breed.name}
-          </option>
-        ))}
-      </select>
+    <>
+      <div>
+        <select name='order' onChange={onOrderChangeHandler}>
+          <option value={'asc'}>asc</option>
+          <option value={'desc'}>desc</option>
+        </select>
+        <select name='limit' onChange={onLimitChangeHandler}>
+          <option value={'5'}>5</option>
+          <option value={'10'}>10</option>
+          <option value={'15'}>15</option>
+          <option value={'20'}>20</option>
+          <option value={'25'}>25</option>
+        </select>
+        <select name='select_breeds' onChange={onBreedChangeHandler}>
+          <option value={''}>None</option>
+          {allBreeds?.map((breed) => (
+            <option key={breed.id} value={breed.id}>
+              {breed.name}
+            </option>
+          ))}
+        </select>
+      </div>
       {showAllBreeds && breedIds === '' && <ImagesGrid data={data} />}
       {showFiltredBreeds && breedIds !== '' && <ImagesGrid data={data} />}
-    </div>
+    </>
   )
 }
