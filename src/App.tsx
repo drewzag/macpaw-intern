@@ -27,7 +27,7 @@ const Wrapper = styled.div`
   .main {
     width: 50%;
     // fix this!
-    height: 89%;
+    /* height: 100%; */
   }
 `
 
