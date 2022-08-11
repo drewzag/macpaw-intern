@@ -20,7 +20,6 @@ export const DislikesPage = () => {
   if (isError) return <div>Some Error</div>
   return (
     <>
-      <div>DisikesPage</div>
       <ImagesGrid data={data} />
     </>
   )

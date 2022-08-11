@@ -3,7 +3,8 @@ import { ReactComponent as Dislike } from '../assets/dislike-30.svg'
 import { ReactComponent as Favourites } from '../assets/fav-30.svg'
 import { ReactComponent as Magnifier } from '../assets/search-20.svg'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
+import { BasePathname } from '../models/models'
 
 const SearchWrapper = styled.div`
   display: flex;
@@ -11,17 +12,23 @@ const SearchWrapper = styled.div`
   box-sizing: border-box;
 `
 
-const SmallButton = styled.button`
+const SmallButton = styled.button<{ active: boolean }>`
   width: 60px;
   height: 60px;
   border-radius: 20px;
   border: none;
-  background-color: #fff;
+  background-color: ${(props) => (props.active ? '#FF868E' : '#fff')};
   box-sizing: border-box;
   padding: 0;
+  svg {
+    fill: ${(props) => props.active && '#fff'};
+  }
   &:hover {
     background-color: #fbe0dc;
     cursor: pointer;
+    svg {
+      fill: ${(props) => props.active && '#FF868E'};
+    }
   }
 `
 
@@ -63,30 +70,45 @@ const SearchInput = styled.div`
 `
 
 export const SearchField = () => {
-  const color = '#FF868d'
+  let isLikes = false
+  let isDislikes = false
+  let isFavourites = false
+  const activePage = useLocation()
+
+  switch (activePage.pathname) {
+    case BasePathname.LIKES:
+      isLikes = true
+      break
+    case BasePathname.DISLIKES:
+      isDislikes = true
+      break
+    case BasePathname.FAVOURITES:
+      isFavourites = true
+      break
+  }
 
   return (
     <>
       <SearchWrapper>
         <SearchInput>
           <input />
-          <SmallButton>
-            <Magnifier fill={color} />
+          <SmallButton active={false}>
+            <Magnifier fill='#FF868d' />
           </SmallButton>
         </SearchInput>
         <Link to='/likes'>
-          <SmallButton>
-            <Like fill={color} />
+          <SmallButton active={isLikes}>
+            <Like fill='#FF868d' />
           </SmallButton>
         </Link>
         <Link to='/dislikes'>
-          <SmallButton>
-            <Favourites fill={color} />
+          <SmallButton active={isDislikes}>
+            <Favourites fill='#FF868d' />
           </SmallButton>
         </Link>
         <Link to='/favourites'>
-          <SmallButton>
-            <Dislike fill={color} />
+          <SmallButton active={isFavourites}>
+            <Dislike fill='#FF868d' />
           </SmallButton>
         </Link>
       </SearchWrapper>

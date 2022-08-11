@@ -40,4 +40,7 @@ export enum BasePathname {
   VOTING = '/voting',
   BREEDS = '/breeds',
   GALLERY = '/gallery',
+  LIKES = '/likes',
+  DISLIKES = '/dislikes',
+  FAVOURITES = '/favourites',
 }

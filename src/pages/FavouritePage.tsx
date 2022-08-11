@@ -15,10 +15,5 @@ export const FavouritePage = () => {
   }
 
   if (isError) return <div>Some Error</div>
-  return (
-    <>
-      <div>Favourites Page</div>
-      {isLoading ? <div>Loading...</div> : <ImagesGrid data={data} url={'favourites'} />}
-    </>
-  )
+  return <>{isLoading ? <div>Loading...</div> : <ImagesGrid data={data} url={'favourites'} />}</>
 }
