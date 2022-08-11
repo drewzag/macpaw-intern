@@ -14,7 +14,6 @@ import { LikesPage } from './pages/LikesPage'
 import { VotingPage } from './pages/VotingPage'
 
 const Wrapper = styled.div`
-  background-color: #f8f8f7;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -22,6 +21,7 @@ const Wrapper = styled.div`
     width: 50%;
     display: flex;
     justify-content: center;
+    align-items: center;
   }
   .main {
     width: 50%;

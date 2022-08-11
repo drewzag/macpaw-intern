@@ -68,27 +68,25 @@ export const Navigation = () => {
   }
 
   return (
-    <>
-      <NavBlock>
-        <Link to='/voting'>
-          <NavigationImage backgroundColor='#B4B7FF' active={isVoting}>
-            <img src={VoteTable} />
-          </NavigationImage>
-          <FunctionButton active={isVoting}>VOTING</FunctionButton>
-        </Link>
-        <Link to='/breeds'>
-          <NavigationImage backgroundColor='#97EAB9' active={isBreeds}>
-            <img src={PetBreeds} />
-          </NavigationImage>
-          <FunctionButton active={isBreeds}>BREEDS</FunctionButton>
-        </Link>
-        <Link to='/gallery'>
-          <NavigationImage backgroundColor='#FFD280' active={isGallery}>
-            <img src={ImageSearch} />
-          </NavigationImage>
-          <FunctionButton active={isGallery}>GALLERY</FunctionButton>
-        </Link>
-      </NavBlock>
-    </>
+    <NavBlock>
+      <Link to='/voting'>
+        <NavigationImage backgroundColor='#B4B7FF' active={isVoting}>
+          <img src={VoteTable} />
+        </NavigationImage>
+        <FunctionButton active={isVoting}>VOTING</FunctionButton>
+      </Link>
+      <Link to='/breeds'>
+        <NavigationImage backgroundColor='#97EAB9' active={isBreeds}>
+          <img src={PetBreeds} />
+        </NavigationImage>
+        <FunctionButton active={isBreeds}>BREEDS</FunctionButton>
+      </Link>
+      <Link to='/gallery'>
+        <NavigationImage backgroundColor='#FFD280' active={isGallery}>
+          <img src={ImageSearch} />
+        </NavigationImage>
+        <FunctionButton active={isGallery}>GALLERY</FunctionButton>
+      </Link>
+    </NavBlock>
   )
 }

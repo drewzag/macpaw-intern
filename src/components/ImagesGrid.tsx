@@ -16,6 +16,7 @@ const Grid = styled.div`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
+    margin-bottom: 10px;
     figure {
       &:nth-child(1) {
         grid-row: 1 / 3;
@@ -30,6 +31,7 @@ const Grid = styled.div`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
+    margin-bottom: 10px;
     figure {
       &:nth-child(3) {
         grid-row: 1 / 3;

@@ -12,7 +12,7 @@ export const VotingPage = () => {
   const [makeFav] = useMakeFavouriteMutation()
 
   return (
-    <>
+    <div>
       {isLoading ? (
         <div>Loading...</div>
       ) : (
@@ -27,6 +27,6 @@ export const VotingPage = () => {
           )}
         </div>
       )}
-    </>
+    </div>
   )
 }

@@ -47,7 +47,7 @@ export const BreedsPage = () => {
   }
 
   return (
-    <>
+    <div>
       <select name='order' onChange={onOrderChangeHandler}>
         <option value={'asc'}>asc</option>
         <option value={'desc'}>desc</option>
@@ -69,6 +69,6 @@ export const BreedsPage = () => {
       </select>
       {showAllBreeds && breedIds === '' && <ImagesGrid data={data} />}
       {showFiltredBreeds && breedIds !== '' && <ImagesGrid data={data} />}
-    </>
+    </div>
   )
 }
