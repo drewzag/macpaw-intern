@@ -40,6 +40,8 @@ const Grid = styled.div`
       }
     }
   }
+  .single {
+  }
   img {
     width: 100%;
     height: 100%;
@@ -63,18 +65,29 @@ export const ImagesGrid: React.FC<PropsType> = ({ data, url }) => {
 
   return (
     <Grid>
-      {dividedCatsArray.map((item, index) => (
-        <div key={item[index]?.id} className={`${index % 2 === 0 ? 'normal' : 'revers'}`}>
-          {item.map((el) => (
-            <figure key={el.id}>
-              <img src={el.url} />
-              {/* <div>
+      {dividedCatsArray[0].length === 1 ? (
+        <div className='single'>
+          <figure>
+            <img src={dividedCatsArray[0][0].url} />
+            {/* <div>
                 <button onClick={() => deleteVote({ vote_id: el.id, url })}>delete</button>
               </div> */}
-            </figure>
-          ))}
+          </figure>
         </div>
-      ))}
+      ) : (
+        dividedCatsArray.map((item, index) => (
+          <div key={item[index]?.id} className={`${index % 2 === 0 ? 'normal' : 'revers'}`}>
+            {item.map((el) => (
+              <figure key={el.id}>
+                <img src={el.url} />
+                {/* <div>
+                <button onClick={() => deleteVote({ vote_id: el.id, url })}>delete</button>
+              </div> */}
+              </figure>
+            ))}
+          </div>
+        ))
+      )}
     </Grid>
   )
 }
