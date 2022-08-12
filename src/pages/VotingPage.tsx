@@ -15,16 +15,14 @@ export const VotingPage = () => {
       {isLoading ? (
         <div>Loading...</div>
       ) : (
-        <>
-          {data && <ImagesGrid data={data} />}
-          {data && (
+        data && (
+          <>
+            <ImagesGrid data={data} />
             <button onClick={() => makeVote({ image_id: data[0].id, value: 1 })}>Like</button>
-          )}
-          {data && <button onClick={() => makeFav({ image_id: data[0].id })}>Favourites</button>}
-          {data && (
+            <button onClick={() => makeFav({ image_id: data[0].id })}>Favourites</button>
             <button onClick={() => makeVote({ image_id: data[0].id, value: 0 })}>Dislike</button>
-          )}
-        </>
+          </>
+        )
       )}
     </>
   )
