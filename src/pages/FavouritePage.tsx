@@ -3,11 +3,11 @@ import { useGetFavouritesQuery } from '../data/cat-api/cat.api'
 import { VotedCat } from '../models/models'
 
 export const FavouritePage = () => {
-  const { data: FavouritesCats, isLoading, isError } = useGetFavouritesQuery()
+  const { data: favouritesCats, isLoading, isError } = useGetFavouritesQuery()
 
   let data: VotedCat[] = []
-  if (FavouritesCats) {
-    data = FavouritesCats.map((cat) => ({
+  if (favouritesCats) {
+    data = favouritesCats.map((cat) => ({
       id: cat.id,
       image_id: cat.image.id,
       url: cat.image.url,
