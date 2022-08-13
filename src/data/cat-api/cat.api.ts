@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import {
-  BreedsRequest,
-  CatSearchRequest,
+  IBreedsRequest,
+  ICatSearchRequest,
   IAnalysis,
   IBreedInfo,
   IBreedSearchInfo,
@@ -9,6 +9,10 @@ import {
   ICatVoting,
   ISearchCat,
   ISingleCatImage,
+  MakeVoteResponseType,
+  MakeFavRequestType,
+  MakeVoteRequestType,
+  DeleteVoteRequestType,
 } from '../../models/models'
 
 const SUB_ID = 'drew1111'
@@ -24,7 +28,7 @@ export const catApi = createApi({
   }),
   tagTypes: ['Vote'],
   endpoints: (build) => ({
-    getCats: build.query<ISearchCat[], CatSearchRequest>({
+    getCats: build.query<ISearchCat[], ICatSearchRequest>({
       query: ({ id, limit, breed_id, page, mime_types, order }) => ({
         url: 'images/search',
         params: {
@@ -45,7 +49,7 @@ export const catApi = createApi({
         },
       }),
     }),
-    getAllBreeds: build.query<IBreedInfo[], BreedsRequest>({
+    getAllBreeds: build.query<IBreedInfo[], IBreedsRequest>({
       query: ({ limit, page, order }) => ({
         url: 'breeds',
         params: {
@@ -95,7 +99,7 @@ export const catApi = createApi({
         body: { sub_id: SUB_ID, ...fav },
       }),
     }),
-    deleteVote: build.mutation<string, DeleteVoteType>({
+    deleteVote: build.mutation<string, DeleteVoteRequestType>({
       query: ({ url = 'votes', vote_id }) => ({
         url: `${url}/${vote_id}`,
         method: 'DELETE',
@@ -130,22 +134,3 @@ export const {
   useUploadImageMutation,
   useLazyGetAnalysisQuery,
 } = catApi
-
-type MakeVoteResponseType = {
-  id: string
-  message: string
-}
-
-type MakeVoteRequestType = {
-  image_id: string
-  value: number
-}
-
-type MakeFavRequestType = {
-  image_id: string
-}
-
-type DeleteVoteType = {
-  url?: string
-  vote_id: string
-}

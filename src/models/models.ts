@@ -9,7 +9,7 @@ export enum BasePathname {
 
 // Requests Interfaces
 
-export interface CatSearchRequest {
+export interface ICatSearchRequest {
   id?: string
   limit?: string
   page?: string
@@ -18,10 +18,29 @@ export interface CatSearchRequest {
   order?: string
 }
 
-export interface BreedsRequest {
+export interface IBreedsRequest {
   limit?: string
   page?: string
   order?: string
+}
+
+export type MakeVoteResponseType = {
+  id: string
+  message: string
+}
+
+export type MakeFavRequestType = {
+  image_id: string
+}
+
+export type MakeVoteRequestType = {
+  image_id: string
+  value: number
+}
+
+export type DeleteVoteRequestType = {
+  url?: string
+  vote_id: string
 }
 
 // Response Interfaces
