@@ -30,6 +30,15 @@ const Wrapper = styled.div`
     // fix this!
     /* height: 100%; */
   }
+  @media (orientation: portrait) {
+    flex-wrap: wrap;
+    .nav {
+      width: 100%;
+    }
+    .main {
+      width: 100%;
+    }
+  }
 `
 
 function App() {
