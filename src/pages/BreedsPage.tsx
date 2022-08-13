@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { ImagesGrid } from '../components/ImagesGrid'
 import { useGetAllBreedsQuery, useGetCatsQuery } from '../data/cat-api/cat.api'
-import { Cat } from '../models/models'
+import { IBreedInfo, IImagesGrid, ISearchCat } from '../models/models'
 
 export const BreedsPage = () => {
   const [limit, setLimit] = useState('5')
@@ -23,15 +23,22 @@ export const BreedsPage = () => {
     { skip: breedIds === '' }
   )
 
-  let data: Cat[] = []
+  let data: IImagesGrid[] = []
 
   if (showAllBreeds && breedIds === '') {
-    data = showAllBreeds.map((breed) => ({
-      id: breed.id,
+    data = showAllBreeds.map((breed: IBreedInfo) => ({
+      image_id: breed.id,
       url: breed.image.url,
+      width: breed.image.width,
+      height: breed.image.height,
     }))
   } else if (showFiltredBreeds && breedIds !== '') {
-    data = showFiltredBreeds
+    data = showFiltredBreeds.map((breed: ISearchCat) => ({
+      image_id: breed.id,
+      url: breed.url,
+      width: breed.width,
+      height: breed.height,
+    }))
   }
 
   const onBreedChangeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {

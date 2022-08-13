@@ -47,8 +47,8 @@ export type DeleteVoteRequestType = {
 
 export interface ISearchCat {
   id: string
-  width: number
-  height: number
+  width?: number
+  height?: number
   url: string
 }
 
@@ -175,4 +175,12 @@ export interface IAnalysis {
   vendor: string
   approved: number
   rejected: number
+}
+
+export interface IImagesGrid {
+  id?: number
+  url: string
+  image_id: string
+  width?: number
+  height?: number
 }

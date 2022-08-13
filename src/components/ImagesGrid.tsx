@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useDeleteVoteMutation } from '../data/cat-api/cat.api'
-import { VotedCat } from '../models/models'
+import { IImagesGrid, ISearchCat } from '../models/models'
 
 type PropsType = {
-  data: VotedCat[]
+  data: IImagesGrid[] | ISearchCat[]
   url?: string
 }
 
@@ -52,7 +52,7 @@ const Grid = styled.div`
   }
 `
 
-const arrayDivide = (data: VotedCat[]) => {
+const arrayDivide = (data: IImagesGrid[] | ISearchCat[]) => {
   const size = 5
   let dataMain = []
   for (let i = 0; i < data.length; i += size) {
