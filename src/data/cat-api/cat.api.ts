@@ -1,5 +1,15 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { Breed, BreedsRequest, Cat, CatRequest, SearchBreeds } from '../../models/models'
+import {
+  BreedsRequest,
+  CatSearchRequest,
+  IAnalysis,
+  IBreedInfo,
+  IBreedSearchInfo,
+  ICatFavourites,
+  ICatVoting,
+  ISearchCat,
+  ISingleCatImage,
+} from '../../models/models'
 
 const SUB_ID = 'drew1111'
 
@@ -14,7 +24,7 @@ export const catApi = createApi({
   }),
   tagTypes: ['Vote'],
   endpoints: (build) => ({
-    getCats: build.query<Cat[], CatRequest>({
+    getCats: build.query<ISearchCat[], CatSearchRequest>({
       query: ({ id, limit, breed_id, page, mime_types, order }) => ({
         url: 'images/search',
         params: {
@@ -27,7 +37,7 @@ export const catApi = createApi({
         },
       }),
     }),
-    getSingleCatById: build.query<Cat[], string>({
+    getSingleCatById: build.query<ISingleCatImage[], string>({
       query: (image_id) => ({
         url: 'images',
         params: {
@@ -35,7 +45,7 @@ export const catApi = createApi({
         },
       }),
     }),
-    getAllBreeds: build.query<Breed[], BreedsRequest>({
+    getAllBreeds: build.query<IBreedInfo[], BreedsRequest>({
       query: ({ limit, page, order }) => ({
         url: 'breeds',
         params: {
@@ -45,7 +55,7 @@ export const catApi = createApi({
         },
       }),
     }),
-    getSearchBreed: build.query<SearchBreeds[], string>({
+    getSearchBreed: build.query<IBreedSearchInfo[], string>({
       query: (q: string) => ({
         url: 'breeds/search',
         params: {
@@ -53,7 +63,7 @@ export const catApi = createApi({
         },
       }),
     }),
-    getVotes: build.query<GetVotesType[], void>({
+    getVotes: build.query<ICatVoting[], void>({
       query: () => ({
         url: 'votes',
         params: {
@@ -69,7 +79,7 @@ export const catApi = createApi({
         body: { sub_id: SUB_ID, ...vote },
       }),
     }),
-    getFavourites: build.query<GetVotesType[], void>({
+    getFavourites: build.query<ICatFavourites[], void>({
       query: () => ({
         url: 'favourites',
         params: {
@@ -99,7 +109,7 @@ export const catApi = createApi({
         body: image,
       }),
     }),
-    getAnalysis: build.query<string[], string>({
+    getAnalysis: build.query<IAnalysis[], string>({
       query: (image_id) => ({
         url: `images/${image_id}/analysis`,
       }),
@@ -120,15 +130,6 @@ export const {
   useUploadImageMutation,
   useLazyGetAnalysisQuery,
 } = catApi
-
-export type GetVotesType = {
-  id: string
-  value: number
-  image: {
-    url: string
-    id: string
-  }
-}
 
 type MakeVoteResponseType = {
   id: string
