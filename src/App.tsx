@@ -25,6 +25,7 @@ const Wrapper = styled.div`
     align-items: center;
   }
   .main {
+    position: relative;
     width: 50%;
     // fix this!
     /* height: 100%; */
