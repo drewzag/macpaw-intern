@@ -31,9 +31,10 @@ const Wrapper = styled.div`
     /* height: 100%; */
   }
   @media (orientation: portrait) {
-    flex-wrap: wrap;
+    display: block;
     .nav {
       width: 100%;
+      height: 40%;
     }
     .main {
       width: 100%;
