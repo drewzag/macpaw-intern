@@ -1,4 +1,5 @@
 import { ImagesGrid } from '../components/ImagesGrid'
+import { SearchField } from '../components/SearchField'
 import { useGetFavouritesQuery } from '../data/cat-api/cat.api'
 import { IImagesGrid } from '../models/models'
 
@@ -15,5 +16,10 @@ export const FavouritePage = () => {
   }
 
   if (isError) return <div>Some Error</div>
-  return <>{isLoading ? <div>Loading...</div> : <ImagesGrid data={data} url={'favourites'} />}</>
+  return (
+    <>
+      <SearchField />
+      {isLoading ? <div>Loading...</div> : <ImagesGrid data={data} url={'favourites'} />}
+    </>
+  )
 }

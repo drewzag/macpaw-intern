@@ -1,4 +1,5 @@
 import { ImagesGrid } from '../components/ImagesGrid'
+import { SearchField } from '../components/SearchField'
 import {
   useGetCatsQuery,
   useLazyGetAnalysisQuery,
@@ -23,6 +24,7 @@ export const GalleryPage = () => {
   return (
     <>
       <div>
+        <SearchField />
         <input type='file' onChange={sendFile} />
       </div>
       {isLoading ? <div>Loading...</div> : data && <ImagesGrid data={data} />}

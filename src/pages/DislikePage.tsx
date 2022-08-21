@@ -1,4 +1,5 @@
 import { ImagesGrid } from '../components/ImagesGrid'
+import { SearchField } from '../components/SearchField'
 import { useGetVotesQuery } from '../data/cat-api/cat.api'
 import { IImagesGrid } from '../models/models'
 
@@ -20,6 +21,8 @@ export const DislikesPage = () => {
   if (isError) return <div>Some Error</div>
   return (
     <>
+      <SearchField />
+
       <ImagesGrid data={data} />
     </>
   )

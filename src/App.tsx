@@ -1,7 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 import styled from 'styled-components'
 import { Navigation } from './components/Navigation'
-import { SearchField } from './components/SearchField'
 //pages
 import { BreedsInfoPage } from './pages/BreedsInfoPage'
 import { BreedsPage } from './pages/BreedsPage'
@@ -49,7 +48,6 @@ function App() {
         <Navigation />
       </div>
       <div className='main'>
-        <SearchField />
         <Routes>
           <Route path='/' element={<HomePage />} />
           <Route path='/voting' element={<VotingPage />} />

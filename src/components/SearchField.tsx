@@ -96,13 +96,13 @@ export const SearchField = () => {
           <Like fill='#FF868d' />
         </SmallButton>
       </Link>
-      <Link to='/dislikes'>
-        <SmallButton active={isDislikes}>
+      <Link to='/favourites'>
+        <SmallButton active={isFavourites}>
           <Favourites fill='#FF868d' />
         </SmallButton>
       </Link>
-      <Link to='/favourites'>
-        <SmallButton active={isFavourites}>
+      <Link to='/dislikes'>
+        <SmallButton active={isDislikes}>
           <Dislike fill='#FF868d' />
         </SmallButton>
       </Link>

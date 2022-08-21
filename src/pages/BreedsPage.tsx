@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { ImagesGrid } from '../components/ImagesGrid'
+import { SearchField } from '../components/SearchField'
 import { useGetAllBreedsQuery, useGetCatsQuery } from '../data/cat-api/cat.api'
 import { IBreedInfo, IImagesGrid, ISearchCat } from '../models/models'
 
@@ -56,6 +57,7 @@ export const BreedsPage = () => {
   return (
     <>
       <div>
+        <SearchField />
         <select name='order' onChange={onOrderChangeHandler}>
           <option value={'asc'}>asc</option>
           <option value={'desc'}>desc</option>
