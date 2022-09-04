@@ -9,6 +9,7 @@ type PropsType = {
 }
 
 const Grid = styled.div`
+  padding: 10px 0 0 0;
   overflow: scroll;
   margin: 0;
   height: calc(100% - 60px - 21.5px);

@@ -10,7 +10,6 @@ const NavBlock = styled.div`
   align-items: center;
   justify-content: space-evenly;
   width: 90%;
-  /* gap: 16px; */
 `
 
 const FunctionButton = styled.button<{ active: boolean; width?: string }>`
@@ -22,8 +21,8 @@ const FunctionButton = styled.button<{ active: boolean; width?: string }>`
   color: ${(props) => (props.active ? '#fff ' : '#ff868e')};
   &:hover {
     cursor: pointer;
-    background-color: #fbe0dc;
-    color: ${(props) => props.active && '#ff868e'};
+    background-color: ${(props) => (props.active ? '#ff868e' : '#fbe0dc')};
+    color: ${(props) => (props.active ? '#fff' : '#ff868e')};
   }
 `
 
@@ -37,7 +36,7 @@ const NavigationImage = styled.div<{ backgroundColor: string; active: boolean }>
   border: 4px solid ${(props) => (props.active ? '#FBE0DC' : 'rgba(255, 255, 255, 0.6)')};
   background-color: ${(props) => props.backgroundColor};
   &:hover {
-    border-color: #fff;
+    border-color: ${(props) => (props.active ? '#FBE0DC' : '#fff')};
     cursor: pointer;
   }
   img {
